@@ -58,7 +58,7 @@ TBD
 
 
 ## Wireframe
-![wireframe1](/wireframe/IMG_8109.JPG) ![wireframe2](/wireframe/IMG_8110.JPG)
+![wireframe1](/wireframe/IMG_8109.JPG) ![wireframe2](/wireframe/IMG_8110.jpg)
 
 ## ERD
 ![ERD](/wireframe/IMG_8111.JPG)
