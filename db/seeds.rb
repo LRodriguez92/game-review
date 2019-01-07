@@ -12,4 +12,19 @@ users = User.create([
     email: "random@guy.com",
     password: "password"
   }
-  ])
+])
+
+comments = Review.create([
+  {
+    user_id: 1,
+		name: "My first review",
+  	image: "example of an image I guess",
+		body: "blah blah blah review blah blah blah"
+  },
+  {
+    user_id: 1,
+		name: "My second review",
+  	image: "example of another image",
+		body: "blah blah blah review blah blah blah"
+  }
+])
