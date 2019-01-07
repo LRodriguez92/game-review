@@ -2,6 +2,11 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user, only: [:create, :update, :destroy]
   before_action :set_review, only: [:show, :update, :destroy]
   # GET /reviews
+
+  def get_all
+    render json: Review.all
+  end
+
   def index
     @reviews = Review.all
 
