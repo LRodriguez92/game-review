@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user, only: [:create, :update, :destroy]
+  before_action :set_review, only: [:show, :update, :destroy]
 
   # GET /reviews
   def index
@@ -46,6 +46,6 @@ class ReviewsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def review_params
-      params.require(:review).permit(:name, :image, :review, :user_id)
+      params.require(:review).permit(:name, :image, :body, :user_id)
     end
 end

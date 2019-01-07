@@ -2,12 +2,12 @@
 
 one:
   name: MyString
-  image: 
-  review: MyString
+  image: MyText
+  body: MyText
   user: one
 
 two:
   name: MyString
-  image: 
-  review: MyString
+  image: MyText
+  body: MyText
   user: two
