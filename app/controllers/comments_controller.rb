@@ -3,10 +3,6 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
 
   # GET /comments
-  def get_all
-    render json: Comment.all
-  end
-
   def index
     @comments = Comment.all
 
