@@ -2,6 +2,11 @@ class RatingsController < ApplicationController
   before_action :set_rating, only: [:show, :update, :destroy]
 
   # GET /ratings
+
+  def get_all
+    render json: Rating.all
+  end
+
   def index
     @ratings = Rating.all
 
