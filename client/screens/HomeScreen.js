@@ -20,11 +20,11 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: '',
+      view: 'home',
       reviews: [],
-      review: ''
+      review: []
     }
-    this.readReview = this.readReview.bind(this);
+    this.getReview = this.getReview.bind(this);
   }
   static navigationOptions = {
     header: null,
@@ -40,10 +40,12 @@ export default class HomeScreen extends React.Component {
     this.getReviews();
   }
 
-  readReview(id, view) {
+  async getReview(id) {
+    const resp = await axios.get(`${BASE_URL}/reviews/${id}`);
+    const review = resp.data;
     this.setState({
-      review: id,
-      view: view
+      review: review,
+      view: 'review'
     });
   }
 
@@ -52,11 +54,13 @@ export default class HomeScreen extends React.Component {
       case 'home':
         return <Reviews
           reviews={this.state.reviews}
-          readReview={this.readReview(id, view)}
+          getReview={(id) => this.getReview(id)}
         />
         break;
       case 'review':
-        return <Review review={this.state.review}/>
+        return <Review
+          review={this.state.review}
+        />
         break;
       default:
         return <Reviews reviews={this.state.reviews}/>

@@ -16,7 +16,8 @@ export default function Reviews(props) {
           <Text>{review.image}</Text>
           <Text>{review.body}</Text>
         <Button
-          onPress={() => props.readReview(review.id, 'review')}
+          key={review.id}
+          onPress={() => props.getReview(review.id)}
           title="Read Review"
           color="#155685"
           accessibilityLabel="View this review"
