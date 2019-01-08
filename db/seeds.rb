@@ -36,3 +36,10 @@ comments = Comment.create([
   	"body": "This is a great review!"
   }
 ])
+
+favorites = Favorite.create([
+  {
+    "user_id": 1,
+	  "review_id": 2
+  }
+  ])
