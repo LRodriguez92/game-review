@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :favorites
   post 'user_token' => 'user_token#create'
   # get '/reviews', to: 'reviews#get_all'
-  # get '/reviews/:id/ratings', to: 'ratings#get_all'
-  # get '/reviews/:id/comments', to: 'comments#get_all'
+  # get '/ratings', to: 'ratings#get_all'
+  # get '/comments', to: 'comments#get_all'
   resources :ratings
   resources :comments
   resources :reviews

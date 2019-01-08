@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :comments
   has_many :ratings
+  has_many :favorites
 
   def to_token_payload
     {
