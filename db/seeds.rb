@@ -42,4 +42,11 @@ favorites = Favorite.create([
     "user_id": 1,
 	  "review_id": 2
   }
-  ])
+])
+
+ratings = Rating.create([
+  {
+    "user_id": 1,
+	  "review_id": 2
+  }
+])

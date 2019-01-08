@@ -1,12 +1,7 @@
 class RatingsController < ApplicationController
-  before_action :authenticate_user, only: [:create, :update, :destroy]
   before_action :set_rating, only: [:show, :update, :destroy]
 
   # GET /ratings
-  def get_all
-    render json: Rating.all
-  end
-
   def index
     @ratings = Rating.all
 
@@ -51,6 +46,6 @@ class RatingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def rating_params
-      params.require(:rating).permit(:rating, :review_id)
+      params.require(:rating).permit(:rate, :review_id)
     end
 end
