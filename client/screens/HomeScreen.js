@@ -9,57 +9,66 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-
 import { MonoText } from '../components/StyledText';
+import Reviews from '../components/Reviews';
+import Review from '../components/Review';
+import axios from 'axios';
+
+const BASE_URL =  'http://70c370a0.ngrok.io'
 
 export default class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      view: '',
+      reviews: [],
+      review: ''
+    }
+    this.readReview = this.readReview.bind(this);
+  }
   static navigationOptions = {
     header: null,
   };
+
+  async getReviews() {
+    const resp = await axios.get(`${BASE_URL}/reviews`);
+    const reviews = resp.data;
+    this.setState({reviews: reviews});
+  }
+
+  async componentDidMount() {
+    this.getReviews();
+  }
+
+  readReview(id, view) {
+    this.setState({
+      review: id,
+      view: view
+    });
+  }
+
+  renderView() {
+    switch (this.state.view) {
+      case 'home':
+        return <Reviews
+          reviews={this.state.reviews}
+          readReview={this.readReview(id, view)}
+        />
+        break;
+      case 'review':
+        return <Review review={this.state.review}/>
+        break;
+      default:
+        return <Reviews reviews={this.state.reviews}/>
+    }
+  }
 
   render() {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
-
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-            <Text style={styles.getStartedText}>My name is Leo</Text>
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>
-              And this is my app
-            </Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
-          </View>
+          {this.renderView()}
         </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
       </View>
     );
   }
@@ -86,16 +95,6 @@ export default class HomeScreen extends React.Component {
       );
     }
   }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
 
 const styles = StyleSheet.create({
