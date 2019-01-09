@@ -7,23 +7,27 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Button
+  Button,
+  RefreshControl,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 import Reviews from '../components/Reviews';
+import Review from '../components/Review';
 import axios from 'axios';
-// import BASE_URL from '../App.js';
-export const BASE_URL = 'http://ddc042da.ngrok.io';
-console.warn(BASE_URL);
+import { BASE_URL } from '../helper/BASE_URL';
+
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       reviews: [],
-      currentReview: []
+      currentReview: [],
+      refreshing: false,
+      view: 'reviews'
     }
     this.getCurrentReview = this.getCurrentReview.bind(this);
+    this.onRefresh = this.onRefresh.bind(this);
   }
 
   static navigationOptions = {
@@ -36,6 +40,7 @@ export default class HomeScreen extends React.Component {
     //   />
     // ),
   }
+
 
   async getReviews() {
     const resp = await axios.get(`${BASE_URL}/reviews`);
@@ -52,18 +57,50 @@ export default class HomeScreen extends React.Component {
     const currentReview = resp.data;
     this.setState({
       currentReview: currentReview,
+      view: 'review'
     });
-    this.props.navigation.navigate('Review', {currentReview: this.state.currentReview});
+    // this.props.navigation.navigate('Review', {currentReview: this.state.currentReview});
+  }
+
+   async onRefresh() {
+    this.setState({refreshing: true});
+    await this.getReviews();
+    this.setState({refreshing: false});
+  }
+
+  renderView() {
+    switch (this.state.view) {
+      case 'reviews':
+        return <Reviews
+          reviews={this.state.reviews}
+          getCurrentReview={(id) => this.getCurrentReview(id)}/>
+        break;
+      case 'review':
+        return <Review
+          currentReview={this.state.currentReview}
+        />
+        break;
+      default:
+        return <Reviews
+          reviews={this.state.reviews}
+          getCurrentReview={(id) => this.getCurrentReview(id)}/>
+    }
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Reviews
-            reviews={this.state.reviews}
-            getCurrentReview={(id) => this.getCurrentReview(id)}
-          />
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this.onRefresh}
+            />
+          }
+          >
+            {this.renderView()}
         </ScrollView>
       </View>
     );
