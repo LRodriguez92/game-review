@@ -16,6 +16,15 @@ export default function Review(props) {
             <Text>{props.currentReview.name}</Text>
             <Text>{props.currentReview.image}</Text>
             <Text>{props.currentReview.body}</Text>
+              <View>
+                <Text>Comments:</Text>
+                {props.currentReview.comments.map(comment => (
+                  <View key={comment.id}>
+                    <Text>{comment.user.name}</Text>
+                    <Text>{comment.body}</Text>
+                  </View>
+                ))}
+              </View>
             <Button
               key={props.currentReview.id}
               onPress={() => alert('going back')}
