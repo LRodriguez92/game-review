@@ -12,9 +12,7 @@ import {
 import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 import Reviews from '../components/Reviews';
-import Review from '../components/Review';
 import axios from 'axios';
-// import { createStackNavigator, createAppContainer } from 'react-navigation';
 const BASE_URL =  'http://70c370a0.ngrok.io'
 
 
