@@ -7,14 +7,16 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button
 } from 'react-native';
 import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 import Reviews from '../components/Reviews';
 import Review from '../components/Review';
 import axios from 'axios';
-
+// import { createStackNavigator, createAppContainer } from 'react-navigation';
 const BASE_URL =  'http://70c370a0.ngrok.io'
+
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -25,10 +27,18 @@ export default class HomeScreen extends React.Component {
       review: []
     }
     this.getReview = this.getReview.bind(this);
+    this.renderHome = this.renderHome.bind(this);
   }
+
   static navigationOptions = {
     header: null,
-  };
+  }
+
+  renderHome() {
+    this.setState({
+      view: 'home'
+    })
+  }
 
   async getReviews() {
     const resp = await axios.get(`${BASE_URL}/reviews`);
@@ -50,8 +60,10 @@ export default class HomeScreen extends React.Component {
   }
 
   renderView() {
+    const {navigate} = this.props.navigation;
     switch (this.state.view) {
       case 'home':
+        // onPress={() => this.props.navigation.navigate('Links')}
         return <Reviews
           reviews={this.state.reviews}
           getReview={(id) => this.getReview(id)}
@@ -63,7 +75,10 @@ export default class HomeScreen extends React.Component {
         />
         break;
       default:
-        return <Reviews reviews={this.state.reviews}/>
+        return <Reviews
+          reviews={this.state.reviews}
+          getReview={(id) => this.getReview(id)}
+        />
     }
   }
 

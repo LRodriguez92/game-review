@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
+
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
@@ -21,6 +22,7 @@ HomeStack.navigationOptions = {
           ? `ios-home`
           : 'md-home'
       }
+      onPress={() => alert('This is a button!')}
     />
   ),
 };
@@ -49,6 +51,7 @@ SettingsStack.navigationOptions = {
     <TabBarIcon
       focused={focused}
       name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      onTabPress={() => alert('This is a button!')}
     />
   ),
 };
