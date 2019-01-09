@@ -22,7 +22,6 @@ HomeStack.navigationOptions = {
           ? `ios-home`
           : 'md-home'
       }
-      onPress={() => alert('This is a button!')}
     />
   ),
 };
