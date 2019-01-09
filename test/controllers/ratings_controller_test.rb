@@ -12,7 +12,7 @@ class RatingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create rating" do
     assert_difference('Rating.count') do
-      post ratings_url, params: { rating: { rate: @rating.rate, review_id: @rating.review_id } }, as: :json
+      post ratings_url, params: { rating: { rate: @rating.rate, review_id: @rating.review_id, user_id: @rating.user_id } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class RatingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update rating" do
-    patch rating_url(@rating), params: { rating: { rate: @rating.rate, review_id: @rating.review_id } }, as: :json
+    patch rating_url(@rating), params: { rating: { rate: @rating.rate, review_id: @rating.review_id, user_id: @rating.user_id } }, as: :json
     assert_response 200
   end
 

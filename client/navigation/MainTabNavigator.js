@@ -33,14 +33,14 @@ const ReviewFormStack = createStackNavigator({
 });
 
 ReviewFormStack.navigationOptions = {
-  tabBarLabel: 'Review Form',
+  tabBarLabel: 'Create Review',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-home`
-          : 'md-home'
+          ? `ios-paper`
+          : 'md-paper'
       }
     />
   ),

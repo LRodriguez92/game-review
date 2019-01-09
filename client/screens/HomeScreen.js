@@ -28,13 +28,13 @@ export default class HomeScreen extends React.Component {
 
   static navigationOptions = {
     title: 'Game Review',
-    headerRight: (
-      <Button
-        onPress={() => alert('This is a button!')}
-        title="New"
-        color="#000"
-      />
-    ),
+    // headerRight: (
+    //   <Button
+    //     onPress={() => alert('This is a button!')}
+    //     title="New"
+    //     color="#000"
+    //   />
+    // ),
   }
 
   async getReviews() {
