@@ -28,6 +28,7 @@ export default class HomeScreen extends React.Component {
     }
     this.getCurrentReview = this.getCurrentReview.bind(this);
     this.onRefresh = this.onRefresh.bind(this);
+    this.backToHome = this.backToHome.bind(this);
   }
 
   static navigationOptions = {
@@ -68,6 +69,10 @@ export default class HomeScreen extends React.Component {
     this.setState({refreshing: false});
   }
 
+  backToHome() {
+    this.setState({view: 'reviews'});
+  }
+
   renderView() {
     switch (this.state.view) {
       case 'reviews':
@@ -78,6 +83,7 @@ export default class HomeScreen extends React.Component {
       case 'review':
         return <Review
           currentReview={this.state.currentReview}
+          backToHome={this.backToHome}
         />
         break;
       default:

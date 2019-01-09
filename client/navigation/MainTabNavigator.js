@@ -98,6 +98,6 @@ export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
-  ReviewStack,
+  // ReviewStack,
   ReviewFormStack
 });

@@ -27,7 +27,7 @@ export default function Review(props) {
               </View>
             <Button
               key={props.currentReview.id}
-              onPress={() => alert('going back')}
+              onPress={props.backToHome}
               title="Back"
               color="#155685"
               accessibilityLabel="Go to previous page"
