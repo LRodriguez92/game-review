@@ -19,7 +19,7 @@ export default function Reviews(props) {
             <Text>{review.body}</Text>
             <Button
               key={review.id}
-              onPress={() => props.getReview(review.id)}
+              onPress={() => props.getCurrentReview(review.id)}
               title="Read Review"
               color="#155685"
               accessibilityLabel="View this review"

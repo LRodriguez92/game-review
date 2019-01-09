@@ -24,20 +24,13 @@ export default class HomeScreen extends React.Component {
     this.state = {
       view: 'home',
       reviews: [],
-      review: []
+      currentReview: []
     }
-    this.getReview = this.getReview.bind(this);
-    this.renderHome = this.renderHome.bind(this);
+    this.getCurrentReview = this.getCurrentReview.bind(this);
   }
 
   static navigationOptions = {
     header: null,
-  }
-
-  renderHome() {
-    this.setState({
-      view: 'home'
-    })
   }
 
   async getReviews() {
@@ -50,43 +43,23 @@ export default class HomeScreen extends React.Component {
     this.getReviews();
   }
 
-  async getReview(id) {
+  async getCurrentReview(id) {
     const resp = await axios.get(`${BASE_URL}/reviews/${id}`);
-    const review = resp.data;
+    const currentReview = resp.data;
     this.setState({
-      review: review,
-      view: 'review'
+      currentReview: currentReview,
     });
-  }
-
-  renderView() {
-    const {navigate} = this.props.navigation;
-    switch (this.state.view) {
-      case 'home':
-        // onPress={() => this.props.navigation.navigate('Links')}
-        return <Reviews
-          reviews={this.state.reviews}
-          getReview={(id) => this.getReview(id)}
-        />
-        break;
-      case 'review':
-        return <Review
-          review={this.state.review}
-        />
-        break;
-      default:
-        return <Reviews
-          reviews={this.state.reviews}
-          getReview={(id) => this.getReview(id)}
-        />
-    }
+    this.props.navigation.navigate('Review', {currentReview: this.state.currentReview});
   }
 
   render() {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          {this.renderView()}
+          <Reviews
+            reviews={this.state.reviews}
+            getCurrentReview={(id) => this.getCurrentReview(id)}
+          />
         </ScrollView>
       </View>
     );
