@@ -7,12 +7,22 @@ import {
   ScrollView,
   Button,
 } from 'react-native';
+import { HeaderBackButton } from 'react-navigation';
 
 export default class Review extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentReview: this.props.navigation.state.params.currentReview
+    }
+  }
+
+  static navigationOptions = ({navigation}) => {
+    return {
+      title: 'Review',
+      headerLeft: (
+        <HeaderBackButton onPress={() => navigation.goBack(null)}/>
+      ),
     }
   }
 

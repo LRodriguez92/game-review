@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ReviewScreen from '../screens/ReviewScreen';
+import ReviewFormScreen from '../screens/ReviewFormScreen';
 
 
 const HomeStack = createStackNavigator({
@@ -27,12 +28,30 @@ HomeStack.navigationOptions = {
   ),
 };
 
+const ReviewFormStack = createStackNavigator({
+  ReviewForm: ReviewFormScreen,
+});
+
+ReviewFormStack.navigationOptions = {
+  tabBarLabel: 'Review Form',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-home`
+          : 'md-home'
+      }
+    />
+  ),
+};
+
 const ReviewStack = createStackNavigator({
   Review: ReviewScreen,
 });
 
 ReviewStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: 'Review',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -79,5 +98,6 @@ export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
-  ReviewStack
+  ReviewStack,
+  ReviewFormStack
 });

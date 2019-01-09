@@ -13,7 +13,7 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 import Reviews from '../components/Reviews';
 import axios from 'axios';
-const BASE_URL =  'http://70c370a0.ngrok.io'
+const BASE_URL = 'http://70c370a0.ngrok.io';
 
 
 export default class HomeScreen extends React.Component {
@@ -27,7 +27,14 @@ export default class HomeScreen extends React.Component {
   }
 
   static navigationOptions = {
-    header: null,
+    title: 'Game Review',
+    headerRight: (
+      <Button
+        onPress={() => alert('This is a button!')}
+        title="New"
+        color="#000"
+      />
+    ),
   }
 
   async getReviews() {
