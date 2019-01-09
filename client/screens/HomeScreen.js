@@ -13,9 +13,9 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 import Reviews from '../components/Reviews';
 import axios from 'axios';
-const BASE_URL = 'http://70c370a0.ngrok.io';
-
-
+// import BASE_URL from '../App.js';
+export const BASE_URL = 'http://ddc042da.ngrok.io';
+console.warn(BASE_URL);
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);

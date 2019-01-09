@@ -11,8 +11,7 @@ import {
   TextInput,
 } from 'react-native';
 import axios from 'axios';
-
-const BASE_URL = 'http://70c370a0.ngrok.io';
+import BASE_URL from '../App';
 
 
 export default class ReviewFormScreen extends React.Component {

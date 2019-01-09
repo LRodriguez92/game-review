@@ -35,6 +35,14 @@ export default class Review extends React.Component {
           <Text>{currentReview.name}</Text>
           <Text>{currentReview.image}</Text>
           <Text>{currentReview.body}</Text>
+          <View>
+            <Text>Comments:</Text>
+            {currentReview.comments.map(comment => (
+              <View key={comment.id}>
+                <Text>{comment.body}</Text>
+              </View>
+            ))}
+          </View>
         </ScrollView>
       </View>
     )

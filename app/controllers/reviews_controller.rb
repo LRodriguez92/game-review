@@ -10,12 +10,12 @@ class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
 
-    render json: @reviews.to_json(:include => [:ratings, :comments])
+    render json: @reviews.to_json(:include => [:ratings, {:comments => {:include => :user}}])
   end
 
   # GET /reviews/1
   def show
-    render json: @review.to_json(:include => [:ratings, :comments])
+    render json: @review.to_json(:include => [:ratings, {:comments => {:include => :user}}])
   end
 
   # POST /reviews

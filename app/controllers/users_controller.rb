@@ -5,12 +5,12 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    render json: @users.to_json(:include => [:reviews, :comments, :favorites])
+    render json: @users.to_json(:include => [:reviews, :comments, :favorites, :ratings])
   end
 
   # GET /users/1
   def show
-    render json: @user.to_json(:include => [:reviews, :comments, :favorites])
+    render json: @user.to_json(:include => [:reviews, :comments, :favorites, :ratings])
   end
 
   # POST /users

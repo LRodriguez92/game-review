@@ -1,17 +1,17 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user, only: [:create, :update, :destroy]
+  # before_action :authenticate_user, only: [:create, :update, :destroy]
   before_action :set_comment, only: [:show, :update, :destroy]
 
   # GET /comments
   def index
     @comments = Comment.all
 
-    render json: @comments
+    render json: @comments.to_json(:include => :user)
   end
 
   # GET /comments/1
   def show
-    render json: @comment
+    render json: @comment.to_json(:include => :user)
   end
 
   # POST /comments
