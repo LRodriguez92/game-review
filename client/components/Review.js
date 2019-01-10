@@ -16,7 +16,7 @@ export default function Review(props) {
       <ScrollView>
           <View key={props.currentReview.id}>
             <Text>{props.currentReview.name}</Text>
-            <Text>{props.currentReview.image}</Text>
+            <Image style={{ height:150, width: 150 }} source={{uri: props.currentReview.image}}/>
             <Text>{props.currentReview.body}</Text>
               <View>
                 <Text>Comments:</Text>

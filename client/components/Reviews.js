@@ -10,7 +10,7 @@ import {
 
 export default function Reviews(props) {
   return (
-    <View>
+    <View style={styles.container}>
       <ScrollView>
         {props.reviews.map(review => (
           <View key={review.id}>
@@ -19,7 +19,7 @@ export default function Reviews(props) {
             {/* <Text>{review.image}</Text> */}
             <Text style={styles.text}>{review.body}</Text>
             <Button
-              style={styles.button}
+              buttonStyle={styles.button}
               key={review.id}
               onPress={() => props.getCurrentReview(review.id)}
               title="Read Review"
@@ -37,11 +37,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    justifyContent: 'center',
   },
   text: {
     color: '#000',
   },
   button: {
-    color: '#800000'
+    height: 10,
+    width: 10,
+    backgroundColor: '#800000'
   }
 });
