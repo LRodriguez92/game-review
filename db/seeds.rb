@@ -33,31 +33,31 @@ reviews = Review.create([
   {
     user_id: 1,
 		name: "Super Smash Bros",
-  	image: "example of an image I guess",
+  	image: "https://assets1.ignimgs.com/2018/08/01/nintendoswitch-supersmashbrosultimate-artwork-04-copy-1529091666080-1533152239388_400w.png",
 		body: "Best way to lose friends"
   },
   {
     user_id: 1,
 		name: "Dragon Ball Fighterz",
-  	image: "example of another image",
+  	image: "https://media.comicbook.com/2018/01/dbfz-4-1078935-1280x0.jpeg",
 		body: "Better than Marvel vs Capcom!"
   },
   {
     user_id: 2,
 		name: "The Last Of Us",
-  	image: "example of an image I guess",
+  	image: "https://cdn.gamerant.com/wp-content/uploads/the-last-of-us-2-ellie-ai-companion.jpg.optimal.jpg",
 		body: "Made me cry"
   },
   {
     user_id: 3,
 		name: "Final Fantasy 7",
-  	image: "example of another image",
+  	image: "https://r.hswstatic.com/w_907/gif/finalfantasyvii-MAIN.jpg",
 		body: "Best game ever!"
   },
   {
     user_id: 4,
 		name: "God Of War",
-  	image: "example of another image",
+  	image: "https://d1pqlgpcx1bu0k.cloudfront.net/static/img/GOW-OG-image.jpg",
 		body: "SPARTAAAA!!!!!!!!!"
   },
 ])
