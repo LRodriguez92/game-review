@@ -33,13 +33,6 @@ export default class HomeScreen extends React.Component {
 
   static navigationOptions = {
     title: 'Game Review',
-    // headerRight: (
-    //   <Button
-    //     onPress={() => alert('This is a button!')}
-    //     title="New"
-    //     color="#000"
-    //   />
-    // ),
   }
 
   async getReviews() {
@@ -59,7 +52,6 @@ export default class HomeScreen extends React.Component {
       currentReview: currentReview,
       view: 'review'
     });
-    // this.props.navigation.navigate('Review', {currentReview: this.state.currentReview});
   }
 
    async onRefresh() {
@@ -79,6 +71,8 @@ export default class HomeScreen extends React.Component {
         image: '',
         body: ''
       });
+      this.getReviews();
+      this.backToHome();
     }
   }
 
@@ -93,14 +87,13 @@ export default class HomeScreen extends React.Component {
     this.getReviews();
   }
 
-
-
   renderView() {
     switch (this.state.view) {
       case 'reviews':
         return <Reviews
           reviews={this.state.reviews}
-          getCurrentReview={(id) => this.getCurrentReview(id)}/>
+          getCurrentReview={(id) => this.getCurrentReview(id)}
+        />
         break;
       case 'review':
         return <Review

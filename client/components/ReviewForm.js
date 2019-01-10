@@ -15,7 +15,6 @@ export default class Review extends React.Component {
     super(props);
     this.state = {
       edit: {
-        // id: null,
         name: '',
         image: '',
         body: ''
@@ -26,11 +25,11 @@ export default class Review extends React.Component {
     return (
       // keyboardShouldPersistTaps='handled' lets you dismiss keyboard when tapping outside form
       <ScrollView keyboardShouldPersistTaps='handled'>
-        <FormLabel>Name</FormLabel>
+        <FormLabel>Title</FormLabel>
         <FormInput maxLength = {30} onChangeText={(name) => this.setState({edit: {name: name}})} value={this.state.name}/>
-        <FormLabel>Image</FormLabel>
+        <FormLabel>Image link</FormLabel>
         <FormInput onChangeText={(image) => this.setState({edit: {image: image}})} value={this.state.image}/>
-        <FormLabel>Body</FormLabel>
+        <FormLabel>Review</FormLabel>
         <FormInput multiline={true} onChangeText={(body) => this.setState({edit: {body: body}})} value={this.state.body}/>
         <Button
         onPress={() => this.props.submitEdit(this.props.id, this.state.edit)}

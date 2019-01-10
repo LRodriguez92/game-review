@@ -63,15 +63,12 @@ export default class ReviewFormScreen extends React.Component {
     return (
       // keyboardShouldPersistTaps='handled' lets you dismiss keyboard when tapping outside form
       <ScrollView keyboardShouldPersistTaps='handled'>
-        <FormLabel>Name</FormLabel>
+        <FormLabel>Title</FormLabel>
         <FormInput maxLength = {30} onChangeText={(name) => this.setState({name: name})} value={this.state.name}/>
-        <FormValidationMessage>{'This field is required'}</FormValidationMessage>
-        <FormLabel>Image</FormLabel>
+        <FormLabel>Image link</FormLabel>
         <FormInput onChangeText={(image) => this.setState({image: image})} value={this.state.image}/>
-        <FormValidationMessage>{'This field is required'}</FormValidationMessage>
-        <FormLabel>Body</FormLabel>
+        <FormLabel>Review</FormLabel>
         <FormInput multiline={true} onChangeText={(body) => this.setState({body: body})} value={this.state.body}/>
-        <FormValidationMessage>{'This field is required'}</FormValidationMessage>
         <Button
         onPress={() => this.submitReview()}
         title="Submit Review"

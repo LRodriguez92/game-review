@@ -15,18 +15,6 @@ export default function Review(props) {
     <View>
       <ScrollView>
           <View key={props.currentReview.id}>
-            <Button
-
-              title="Edit"
-              color="#067cc7"
-              accessibilityLabel="Edit Review"
-            />
-            <Button
-              onPress={() => props.deleteReview(props.currentReview.id)}
-              title="Delete"
-              color="#9a2700"
-              accessibilityLabel="Delete Review"
-            />
             <Text>{props.currentReview.name}</Text>
             <Text>{props.currentReview.image}</Text>
             <Text>{props.currentReview.body}</Text>
@@ -39,14 +27,23 @@ export default function Review(props) {
                   </View>
                 ))}
               </View>
-            <Button
-              key={props.currentReview.id}
-              onPress={props.backToHome}
-              title="Back"
-              color="#155685"
-              accessibilityLabel="Go to previous page"
-            />
+            <View>
+              <Button
+                key={props.currentReview.id}
+                onPress={props.backToHome}
+                title="Back"
+                color="#155685"
+                accessibilityLabel="Go to previous page"
+              />
+              <Button
+                onPress={() => props.deleteReview(props.currentReview.id)}
+                title="Delete"
+                color="#9a2700"
+                accessibilityLabel="Delete Review"
+              />
+            </View>
           </View>
+          <Text>Edit Your Review</Text>
           <ReviewForm id={props.currentReview.id} submitEdit={(id, edit) => props.submitEdit(id, edit)}/>
       </ScrollView>
     </View>
