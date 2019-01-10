@@ -15,7 +15,8 @@ export default function Reviews(props) {
         {props.reviews.map(review => (
           <View key={review.id}>
             <Text>{review.name}</Text>
-            <Text>{review.image}</Text>
+            <Image source={{uri: review.image}}/>
+            {/* <Text>{review.image}</Text> */}
             <Text>{review.body}</Text>
             <Button
               key={review.id}
