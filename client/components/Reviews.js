@@ -14,11 +14,12 @@ export default function Reviews(props) {
       <ScrollView>
         {props.reviews.map(review => (
           <View key={review.id}>
-            <Text>{review.name}</Text>
-            <Image source={{uri: review.image}}/>
+            <Text style={styles.text}>{review.name}</Text>
+            <Image style={{ height:150, width: 150 }} source={{uri: review.image}}/>
             {/* <Text>{review.image}</Text> */}
-            <Text>{review.body}</Text>
+            <Text style={styles.text}>{review.body}</Text>
             <Button
+              style={styles.button}
               key={review.id}
               onPress={() => props.getCurrentReview(review.id)}
               title="Read Review"
@@ -31,3 +32,16 @@ export default function Reviews(props) {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  text: {
+    color: '#000',
+  },
+  button: {
+    color: '#800000'
+  }
+});
