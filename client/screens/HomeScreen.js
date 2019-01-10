@@ -24,7 +24,7 @@ export default class HomeScreen extends React.Component {
       reviews: [],
       currentReview: [],
       refreshing: false,
-      view: 'reviews'
+      view: 'reviews',
     }
     this.getCurrentReview = this.getCurrentReview.bind(this);
     this.onRefresh = this.onRefresh.bind(this);
@@ -41,7 +41,6 @@ export default class HomeScreen extends React.Component {
     //   />
     // ),
   }
-
 
   async getReviews() {
     const resp = await axios.get(`${BASE_URL}/reviews`);
@@ -69,9 +68,32 @@ export default class HomeScreen extends React.Component {
     this.setState({refreshing: false});
   }
 
+  async submitEdit(id, edit) {
+    try {
+      await axios.put(`${BASE_URL}/reviews/${id}`, edit);
+    } catch (e) {
+      console.warn(e);
+    } finally {
+      this.setState({
+        name: '',
+        image: '',
+        body: ''
+      });
+    }
+  }
+
   backToHome() {
     this.setState({view: 'reviews'});
   }
+
+
+  async deleteReview(id) {
+    const resp = await axios.delete(`${BASE_URL}/reviews/${id}`);
+    this.backToHome();
+    this.getReviews();
+  }
+
+
 
   renderView() {
     switch (this.state.view) {
@@ -84,6 +106,9 @@ export default class HomeScreen extends React.Component {
         return <Review
           currentReview={this.state.currentReview}
           backToHome={this.backToHome}
+          deleteReview={(id) => this.deleteReview(id)}
+          editView={this.editView}
+          submitEdit={(id, edit) => this.submitEdit(id, edit)}
         />
         break;
       default:
@@ -110,29 +135,6 @@ export default class HomeScreen extends React.Component {
         </ScrollView>
       </View>
     );
-  }
-
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-      return (
-        <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
   }
 }
 
