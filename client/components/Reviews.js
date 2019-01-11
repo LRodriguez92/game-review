@@ -14,8 +14,8 @@ export default function Reviews(props) {
       <ScrollView>
         {props.reviews.map(review => (
           <View key={review.id}>
-            <Text style={styles.text}>{review.name}</Text>
-            <Image style={{ height:150, width: 150 }} source={{uri: review.image}}/>
+            <Text style={styles.title}>{review.name}</Text>
+            <Image style={{ height:150, width: 300 }} source={{uri: review.image}}/>
             {/* <Text>{review.image}</Text> */}
             <Text style={styles.text}>{review.body}</Text>
             <Button
@@ -36,15 +36,22 @@ export default function Reviews(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
+    backgroundColor: '#000',
+    alignItems: 'center',
   },
   text: {
-    color: '#000',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 15,
+  },
+  title: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 30,
   },
   button: {
     height: 10,
     width: 10,
-    backgroundColor: '#800000'
+    backgroundColor: '#800000',
   }
 });

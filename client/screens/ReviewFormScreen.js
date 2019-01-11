@@ -62,7 +62,7 @@ export default class ReviewFormScreen extends React.Component {
   render() {
     return (
       // keyboardShouldPersistTaps='handled' lets you dismiss keyboard when tapping outside form
-      <ScrollView keyboardShouldPersistTaps='handled'>
+      <ScrollView contentContainerStyle={styles.container}keyboardShouldPersistTaps='handled'>
         <FormLabel>Title</FormLabel>
         <FormInput maxLength = {30} onChangeText={(name) => this.setState({name: name})} value={this.state.name}/>
         <FormLabel>Image link</FormLabel>
@@ -78,3 +78,26 @@ export default class ReviewFormScreen extends React.Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000',
+    alignItems: 'center',
+  },
+  text: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 15,
+  },
+  title: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 30,
+  },
+  button: {
+    height: 10,
+    width: 10,
+    backgroundColor: '#800000',
+  }
+});

@@ -12,12 +12,12 @@ import {
 
 export default function Review(props) {
   return (
-    <View>
+    <View style={styles.container}>
       <ScrollView>
           <View key={props.currentReview.id}>
-            <Text>{props.currentReview.name}</Text>
-            <Image style={{ height:150, width: 150 }} source={{uri: props.currentReview.image}}/>
-            <Text>{props.currentReview.body}</Text>
+            <Text style={styles.title}>{props.currentReview.name}</Text>
+            <Image style={{ height:150, width: 300 }} source={{uri: props.currentReview.image}}/>
+            <Text style={styles.text}>{props.currentReview.body}</Text>
               <View>
                 <Text>Comments:</Text>
                 {props.currentReview.comments.map(comment => (
@@ -49,3 +49,26 @@ export default function Review(props) {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000',
+    alignItems: 'center',
+  },
+  text: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 15,
+  },
+  title: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 30,
+  },
+  button: {
+    height: 10,
+    width: 10,
+    backgroundColor: '#800000',
+  }
+});
