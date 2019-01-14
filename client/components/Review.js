@@ -8,25 +8,27 @@ import {
   Text,
   View,
   ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
 
 export default function Review(props) {
   return (
-    <View style={styles.container}>
-      <ScrollView>
+    <KeyboardAvoidingView behavior="padding" enabled>
+      <View style={styles.container}>
+        <ScrollView>
           <View key={props.currentReview.id}>
             <Text style={styles.title}>{props.currentReview.name}</Text>
             <Image style={{ height:250, width: 400 }} source={{uri: props.currentReview.image}}/>
             <Text style={styles.text}>{props.currentReview.body}</Text>
-              <View>
-                <Text>Comments:</Text>
-                {props.currentReview.comments.map(comment => (
-                  <View key={comment.id}>
-                    <Text>{comment.user.name}</Text>
-                    <Text>{comment.body}</Text>
-                  </View>
-                ))}
-              </View>
+            <View>
+              <Text>Comments:</Text>
+              {props.currentReview.comments.map(comment => (
+                <View key={comment.id}>
+                  <Text>{comment.user.name}</Text>
+                  <Text>{comment.body}</Text>
+                </View>
+              ))}
+            </View>
             <View>
               <Button
                 key={props.currentReview.id}
@@ -44,8 +46,9 @@ export default function Review(props) {
             color="#9a2700"
             accessibilityLabel="Delete Review"
           />
-      </ScrollView>
-    </View>
+        </ScrollView>
+      </View>
+    </KeyboardAvoidingView>
   )
 }
 

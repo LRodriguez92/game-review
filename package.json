@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/LRodriguez92/game-review#readme",
   "dependencies": {
-    "postinstall": "^0.4.2"
+    "postinstall": "^0.4.2",
+    "react-native-swipe-gestures": "^1.0.3"
   }
 }
