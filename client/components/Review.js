@@ -16,7 +16,7 @@ export default function Review(props) {
       <ScrollView>
           <View key={props.currentReview.id}>
             <Text style={styles.title}>{props.currentReview.name}</Text>
-            <Image style={{ height:150, width: 300 }} source={{uri: props.currentReview.image}}/>
+            <Image style={{ height:250, width: 400 }} source={{uri: props.currentReview.image}}/>
             <Text style={styles.text}>{props.currentReview.body}</Text>
               <View>
                 <Text>Comments:</Text>
@@ -35,16 +35,15 @@ export default function Review(props) {
                 color="#155685"
                 accessibilityLabel="Go to previous page"
               />
-              <Button
-                onPress={() => props.deleteReview(props.currentReview.id)}
-                title="Delete"
-                color="#9a2700"
-                accessibilityLabel="Delete Review"
-              />
             </View>
           </View>
-          <Text>Edit Your Review</Text>
           <ReviewForm id={props.currentReview.id} submitEdit={(id, edit) => props.submitEdit(id, edit)}/>
+          <Button
+            onPress={() => props.deleteReview(props.currentReview.id)}
+            title="Delete"
+            color="#9a2700"
+            accessibilityLabel="Delete Review"
+          />
       </ScrollView>
     </View>
   )

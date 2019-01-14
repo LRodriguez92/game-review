@@ -1,0 +1,33 @@
+{
+  "name": "game-review",
+  "engines": {
+    "node": "11.2.0"
+  },
+  "version": "1.0.0",
+  "description": "## Description * Sign up and/or log in to the app * Scroll through images of games with their corresponding titles * Clicking on the game image will show you the full review of the game * Users can post a game with a review * Each game will have a title, image, rating, and review * Other users can comment on these reviews and also add their own rating * Users can view all of the game reviews they've created * You can search to see if a review for a certain game exists * You can add games to your favorites and view them later",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LRodriguez92/game-review.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LRodriguez92/game-review/issues"
+  },
+  "homepage": "https://github.com/LRodriguez92/game-review#readme",
+  "dependencies": {
+    "postinstall": "^0.4.2"
+  }
+}
